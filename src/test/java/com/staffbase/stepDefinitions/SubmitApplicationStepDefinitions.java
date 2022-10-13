@@ -16,13 +16,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.Optional;
 
 public class SubmitApplicationStepDefinitions {
 
     ApplicationPage applicationPage = new ApplicationPage();
     ButtonGenerator buttonGenerator = new ButtonGenerator();
-    IFrameGenerator iFrameGenerator = new IFrameGenerator();
 
     @Given("user is on the {string} page")
     public void userIsOnThePage(String page) {
@@ -56,9 +56,9 @@ public class SubmitApplicationStepDefinitions {
     @When("the privacy notice is confirmed")
     public void the_privacy_notice_is_confirmed() {
         Driver.getDriver().switchTo().frame("grnhse_iframe");
-        Select select = new Select(applicationPage.dropDown);
-        //select.selectByVisibleText("Yes");
-        BrowserUtils.dropdownOptions(applicationPage.dropDown).get(1);// now works, needs to be made sure if yes is selected
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].setAttribute('style', 'width: 200px')",applicationPage.dropDown);
+         Select select = new Select(applicationPage.dropDown);
+         select.selectByValue("95567109002");
         Driver.getDriver().switchTo().parentFrame();
     }
 

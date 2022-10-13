@@ -13,10 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ApplicationPage extends BasePage{
 
-
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-
-
 
     @FindBy(xpath = "(//button[.='Attach'])[1]")
     public WebElement resume;
@@ -24,8 +21,7 @@ public class ApplicationPage extends BasePage{
     @FindBy(xpath = "(//button[.='Attach'])[2]")
     public WebElement coverLetter;
 
-
-    @FindBy(xpath = "//select[@id='job_application_answers_attributes_1_answer_selected_options_attributes_1_question_option_id']")
+    @FindBy(id = "job_application_answers_attributes_1_answer_selected_options_attributes_1_question_option_id")
     public WebElement dropDown;
 
     @FindBy(xpath = "//textarea[@name='job_application[answers_attributes][2][text_value]']")
@@ -37,11 +33,15 @@ public class ApplicationPage extends BasePage{
     @FindBy(xpath = "//iframe[@id='grnhse_iframe']")
     public WebElement iFrame;
 
+    @FindBy(xpath = "//label//input[@type='hidden'][@value='20302374002']")
+    public WebElement hidden1;
+
+    @FindBy(xpath = "//label//input[@type='hidden'][@value='1']")
+    public WebElement hidden2;
 
     public void dataEntryToInputBox(String fieldName, String fieldValue){
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(),50);
         switch (fieldName){
-
             case "firstName":
                 WebElement firstName =(WebElement)js.executeScript("return document.querySelector('#first_name')");
                 firstName.sendKeys(fieldValue);
@@ -63,7 +63,6 @@ public class ApplicationPage extends BasePage{
                 workPermit.sendKeys(fieldValue);
                 break;
             case "gitHubRepo":
-//                wait.until(ExpectedConditions.visibilityOf(gitHubRepo));
                 gitHubRepo.sendKeys(fieldValue);
                 break;
             default:

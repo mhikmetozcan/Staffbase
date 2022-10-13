@@ -17,3 +17,8 @@ Feature: Submit Application
       And user enters "work permit status" as "full work permit"
       And the privacy notice is confirmed
       And user enters "gitHubRepo" as "github.com/mhikmetozcan"
+
+
+      @wip
+      Scenario: verify dropdown is selected
+        And the privacy notice is confirmed
