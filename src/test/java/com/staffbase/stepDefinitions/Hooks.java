@@ -1,8 +1,9 @@
 package com.staffbase.stepDefinitions;
 
+import com.staffbase.utilities.BrowserUtils;
 import com.staffbase.utilities.Driver;
+import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
-import org.junit.After;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -16,7 +17,7 @@ public class Hooks {
             byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png",scenario.getName());
         }
-
+        BrowserUtils.waitFor(5);
         Driver.closeDriver();
     }
 }
