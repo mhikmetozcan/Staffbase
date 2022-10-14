@@ -16,6 +16,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.security.KeyFactorySpi;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,9 +47,16 @@ public class SubmitApplicationStepDefinitions {
     }
 
     @When("the resume is attached")
-    public void the_resume_is_attached() {
+    public void the_resume_is_attached() throws AWTException {
         Driver.getDriver().switchTo().frame("grnhse_iframe");
-        applicationPage.resume.sendKeys("C:\\Users\\HuG0\\IdeaProjects\\Staffbase\\MustafaHikmet_Özcan_Resume.pdf");
+        applicationPage.resume.click();
+        BrowserUtils.waitFor(2);
+        StringSelection stringSelection = new StringSelection("C:\\Users\\HuG0\\IdeaProjects\\Staffbase\\files\\MustafaHikmet_Özcan_Resume.pdf");
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+        BrowserUtils.waitFor(1);
+        BrowserUtils.pasteContent();
+        BrowserUtils.waitFor(1);
+        BrowserUtils.hitEnter();
         Driver.getDriver().switchTo().parentFrame();
     }
     @When("the cover letter is attached")

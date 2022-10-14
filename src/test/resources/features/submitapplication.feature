@@ -21,4 +21,4 @@ Feature: Submit Application
 
       @wip
       Scenario: verify dropdown is selected
-        And the privacy notice is confirmed
+        And the resume is attached
