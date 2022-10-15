@@ -12,8 +12,8 @@ Feature: Submit Application
       And user enters "lastName" as "Özcan"
       And user enters "email" as "mhikmetozcan@gmail.com"
       And user enters "phone" as "+49 176 47365154"
-      And the resume is attached
-      And the cover letter is attached
+      And the "resume" is attached
+      And the "cover letter" is attached
       And user enters "work permit status" as "full work permit"
       And the privacy notice is confirmed
       And user enters "gitHubRepo" as "github.com/mhikmetozcan"
@@ -21,4 +21,5 @@ Feature: Submit Application
 
       @wip
       Scenario: verify dropdown is selected
-        And the resume is attached
+        And the "resume" is attached
+        And the "cover letter" is attached

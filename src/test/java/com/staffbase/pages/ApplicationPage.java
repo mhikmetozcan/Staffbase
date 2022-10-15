@@ -1,6 +1,7 @@
 package com.staffbase.pages;
 
 import com.staffbase.utilities.BrowserUtils;
+import com.staffbase.utilities.ConfigurationReader;
 import com.staffbase.utilities.Driver;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
 
 public class ApplicationPage extends BasePage{
 
@@ -68,6 +72,36 @@ public class ApplicationPage extends BasePage{
             default:
                 break;
         }
+    }
+
+    public void uploadDocument(String documentName){
+        StringSelection stringSelection;
+        switch (documentName){
+            case "resume":
+                resume.click();
+                BrowserUtils.waitFor(2);
+                stringSelection  = new StringSelection(ConfigurationReader.getProperty("resume"));
+                Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+                BrowserUtils.waitFor(1);
+                BrowserUtils.pasteContent();
+                BrowserUtils.waitFor(1);
+                BrowserUtils.hitEnter();
+                break;
+
+            case "coverLetter":
+                coverLetter.click();
+                BrowserUtils.waitFor(2);
+                stringSelection = new StringSelection(ConfigurationReader.getProperty("coverLetter"));
+                Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+                BrowserUtils.waitFor(1);
+                BrowserUtils.pasteContent();
+                BrowserUtils.waitFor(1);
+                BrowserUtils.hitEnter();
+
+                break;
+        }
+
+
     }
 
 }

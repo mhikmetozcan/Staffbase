@@ -48,16 +48,9 @@ public class SubmitApplicationStepDefinitions {
 
     @When("the resume is attached")
     public void the_resume_is_attached() throws AWTException {
-        Driver.getDriver().switchTo().frame("grnhse_iframe");
-        applicationPage.resume.click();
-        BrowserUtils.waitFor(2);
-        StringSelection stringSelection = new StringSelection("C:\\Users\\HuG0\\IdeaProjects\\Staffbase\\files\\MustafaHikmet_Özcan_Resume.pdf");
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-        BrowserUtils.waitFor(1);
-        BrowserUtils.pasteContent();
-        BrowserUtils.waitFor(1);
-        BrowserUtils.hitEnter();
-        Driver.getDriver().switchTo().parentFrame();
+
+
+
     }
     @When("the cover letter is attached")
     public void the_cover_letter_is_attached() {
@@ -74,4 +67,10 @@ public class SubmitApplicationStepDefinitions {
     }
 
 
+    @And("the {string} is attached")
+    public void theIsAttached(String document) {
+        Driver.getDriver().switchTo().frame("grnhse_iframe");
+        applicationPage.uploadDocument(document);
+        Driver.getDriver().switchTo().parentFrame();
+    }
 }

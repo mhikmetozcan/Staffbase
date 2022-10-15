@@ -71,8 +71,13 @@ public class BrowserUtils {
      *
      */
 
-    public static void pasteContent() throws AWTException {
-        Robot robot = new Robot();
+    public static void pasteContent()  {
+        Robot robot = null;
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
 
@@ -80,8 +85,13 @@ public class BrowserUtils {
         robot.keyRelease(KeyEvent.VK_V);
     }
 
-    public static void hitEnter() throws  AWTException{
-        Robot robot = new Robot();
+    public static void hitEnter() {
+        Robot robot = null;
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
