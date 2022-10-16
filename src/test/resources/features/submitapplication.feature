@@ -14,9 +14,11 @@ Feature: Submit Application
       And user enters "phone" as "+49 176 47365154"
       And the "resume" is attached
       And the "cover letter" is attached
-      And user enters "work permit status" as "full work permit"
+      And user enters "work permit status" as "I possess full work permit in Germany"
       And the privacy notice is confirmed
       And user enters "gitHubRepo" as "https://github.com/mhikmetozcan/Staffbase.git"
+      And user clicks on "Submit Application" button
+      Then the application should be succesfully sent
 
 
 

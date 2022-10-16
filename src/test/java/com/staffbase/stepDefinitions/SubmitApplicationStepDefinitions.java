@@ -4,6 +4,7 @@ import com.nick318.search.by.frames.SearchByFrames;
 import com.nick318.search.by.frames.SearchByFramesFactory;
 import com.staffbase.pages.ApplicationPage;
 import com.staffbase.pages.JobDescriptionPage;
+import com.staffbase.pages.SuccesfulApplication;
 import com.staffbase.utilities.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -28,6 +29,7 @@ public class SubmitApplicationStepDefinitions {
 
     ApplicationPage applicationPage = new ApplicationPage();
     ButtonGenerator buttonGenerator = new ButtonGenerator();
+    SuccesfulApplication succesfulApplication = new SuccesfulApplication();
 
     @Given("user is on the {string} page")
     public void userIsOnThePage(String page) {
@@ -90,4 +92,11 @@ public class SubmitApplicationStepDefinitions {
         Driver.getDriver().switchTo().parentFrame();
     }
 
+    @Then("the application should be succesfully sent")
+    public void theApplicationShouldBeSuccesfullySent() {
+        Driver.getDriver().switchTo().frame("grnhse_iframe");
+        Assert.assertTrue(succesfulApplication.confirmationMessage.isDisplayed());
+        Driver.getDriver().switchTo().parentFrame();
+
+    }
 }

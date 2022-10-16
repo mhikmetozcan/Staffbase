@@ -18,6 +18,6 @@ public class Hooks {
             scenario.attach(screenshot, "image/png",scenario.getName());
         }
         BrowserUtils.waitFor(5);
-        Driver.closeDriver();
+       // Driver.closeDriver();
     }
 }
