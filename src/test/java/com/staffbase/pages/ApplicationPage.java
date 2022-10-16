@@ -36,6 +36,8 @@ public class ApplicationPage extends BasePage{
 
     @FindBy(xpath = "//div[@class='field-error-msg']")
     public WebElement errorMessage;
+    @FindBy(xpath = "//button[.='or enter manually']")
+    public WebElement enterManually;
 
 
     public void dataEntryToInputBox(String fieldName, String fieldValue){
@@ -89,6 +91,7 @@ public class ApplicationPage extends BasePage{
                 phone.sendKeys(fieldValue);
                 break;
             case "John Doe the QA Engineer":
+                enterManually.click();
                 WebElement resume = (WebElement)js.executeScript("return document.querySelector(\"#resume_text\")");
                 resume.sendKeys(fieldValue);
                 break;
