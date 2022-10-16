@@ -34,17 +34,11 @@ public class ApplicationPage extends BasePage{
     @FindBy(xpath = "//input[@value='Submit Application']")
     public WebElement submitButton;
 
-    @FindBy(xpath = "//iframe[@id='grnhse_iframe']")
-    public WebElement iFrame;
+    @FindBy(xpath = "//div[@class='field-error-msg']")
+    public WebElement errorMessage;
 
-    @FindBy(xpath = "//label//input[@type='hidden'][@value='20302374002']")
-    public WebElement hidden1;
-
-    @FindBy(xpath = "//label//input[@type='hidden'][@value='1']")
-    public WebElement hidden2;
 
     public void dataEntryToInputBox(String fieldName, String fieldValue){
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),50);
         switch (fieldName){
             case "firstName":
                 WebElement firstName =(WebElement)js.executeScript("return document.querySelector('#first_name')");
@@ -67,6 +61,38 @@ public class ApplicationPage extends BasePage{
                 workPermit.sendKeys(fieldValue);
                 break;
             case "gitHubRepo":
+                gitHubRepo.sendKeys(fieldValue);
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
+    public void dataEntryToInputBox(String fieldValue){
+        switch (fieldValue){
+            case "John":
+                WebElement firstName =(WebElement)js.executeScript("return document.querySelector('#first_name')");
+                firstName.sendKeys(fieldValue);
+                break;
+            case "Doe":
+                WebElement lastName = (WebElement)js.executeScript("return document.querySelector('#last_name')");
+                lastName.sendKeys(fieldValue);
+                break;
+            case "johndoe@gmail.com":
+                WebElement email = (WebElement)js.executeScript("return document.querySelector('#email')") ;
+                email.sendKeys(fieldValue);
+                break;
+            case "123456789":
+                WebElement phone = (WebElement)js.executeScript("return document.querySelector(\"#phone\")");
+                phone.sendKeys(fieldValue);
+                break;
+            case "John Doe the QA Engineer":
+                WebElement resume = (WebElement)js.executeScript("return document.querySelector(\"#resume_text\")");
+                resume.sendKeys(fieldValue);
+                break;
+            case "https://github.com/johndoe ":
                 gitHubRepo.sendKeys(fieldValue);
                 break;
             default:

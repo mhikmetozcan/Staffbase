@@ -9,6 +9,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -63,4 +64,30 @@ public class SubmitApplicationStepDefinitions {
         applicationPage.uploadDocument(document);
         Driver.getDriver().switchTo().parentFrame();
     }
+
+    @And("{string} field is filled")
+    public void fieldIsFilled(String arg0) {
+
+
+    }
+
+    @When("user enters {string} {string} {string} {string} {string} {string}")
+    public void userEnters(String firstName, String lastName, String email, String phone, String resume, String gitHubRepo) {
+        Driver.getDriver().switchTo().frame("grnhse_iframe");
+        applicationPage.dataEntryToInputBox(firstName);
+        applicationPage.dataEntryToInputBox(lastName);
+        applicationPage.dataEntryToInputBox(email);
+        applicationPage.dataEntryToInputBox(phone);
+        applicationPage.dataEntryToInputBox(resume);
+        applicationPage.dataEntryToInputBox(gitHubRepo);
+        Driver.getDriver().switchTo().parentFrame();
+    }
+
+    @Then("error message should be displayed")
+    public void errorMessageShouldBeDisplayed() {
+        Driver.getDriver().switchTo().frame("grnhse_iframe");
+        Assert.assertTrue(applicationPage.errorMessage.isDisplayed());
+        Driver.getDriver().switchTo().parentFrame();
+    }
+
 }

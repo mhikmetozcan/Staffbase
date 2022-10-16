@@ -16,10 +16,20 @@ Feature: Submit Application
       And the "cover letter" is attached
       And user enters "work permit status" as "full work permit"
       And the privacy notice is confirmed
-      And user enters "gitHubRepo" as "github.com/mhikmetozcan"
+      And user enters "gitHubRepo" as "https://github.com/mhikmetozcan/Staffbase.git"
 
 
-      @wip
-      Scenario: verify dropdown is selected
-        And the "resume" is attached
-        And the "cover letter" is attached
+
+      Scenario Outline: Verify that compulsory fields need to be filled for applying
+        When user enters "<First Name>" "<Last Name>" "<Email>" "<Phone>" "<Resume/CV>" "<GitHubRepo>"
+        And the privacy notice is confirmed
+        And user clicks on "Submit Application" button
+        Then error message should be displayed
+        Examples:
+          | First Name | Last Name | Email             | Phone     | Resume/CV                | GitHubRepo                 |
+          | John       | Doe       | johndoe@gmail.com | 123456789 | John Doe the QA Engineer |                            |
+          | John       | Doe       | johndoe@gmail.com | 123456789 |                          | https://github.com/johndoe |
+          | John       | Doe       | johndoe@gmail.com |           | John Doe the QA Engineer | https://github.com/johndoe |
+          | John       | Doe       |                   | 123456789 | John Doe the QA Engineer | https://github.com/johndoe |
+          | John       |           | johndoe@gmail.com | 123456789 | John Doe the QA Engineer | https://github.com/johndoe |
+          |            | Doe       | johndoe@gmail.com | 123456789 | John Doe the QA Engineer | https://github.com/johndoe |

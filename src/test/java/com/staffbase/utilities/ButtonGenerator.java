@@ -21,6 +21,11 @@ public class ButtonGenerator {
             case "Accept":
                 jobDescriptionPage.cookiesAccept.click();
                 break;
+            case "Submit Application":
+                Driver.getDriver().switchTo().frame("grnhse_iframe");
+                applicationPage.submitButton.click();
+                Driver.getDriver().switchTo().parentFrame();
+                break;
         }
     }
 
