@@ -16,7 +16,7 @@ public class BrowserUtils {
     /**
      * Clicks on an element using JavaScript
      *
-     * @param element
+     * @param element the web element for the JS executor to click
      */
     public static void clickWithJS(WebElement element) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
@@ -26,22 +26,17 @@ public class BrowserUtils {
     /**
      * This method will accept a dropdown as a WebElement
      * and return all the options in a List of WebElements.
-     * @param dropdownElement
+     * @param dropdownElement the dropdown element whose options are extracted into a list
      * @return List<WebElement> actualOptionsAsWebElement
      */
     public static List<WebElement> dropdownOptions(WebElement dropdownElement){
         Select select = new Select(dropdownElement);
-
-        //List of all ACTUAL <options> as a web element
-        List<WebElement> actualOptionsAsWebElement = select.getOptions();
-
-        return  actualOptionsAsWebElement;
-
+        return select.getOptions();
     }
 
     /**
      * Switches to new window by the exact title. Returns to original window if target title not found
-     * @param targetTitle
+     * @param targetTitle Title of the target window
      */
     public static void switchToWindow(String targetTitle) {
         String origin = Driver.getDriver().getWindowHandle();
@@ -57,7 +52,7 @@ public class BrowserUtils {
     /**
      * Performs a pause
      *
-     * @param seconds
+     * @param seconds to wait
      */
     public static void waitFor(int seconds) {
         try {
@@ -68,7 +63,7 @@ public class BrowserUtils {
     }
 
     /**
-     *
+     * Presses ctrl+v in order to paste the content on the clipboard into the text input field
      */
 
     public static void pasteContent()  {
@@ -85,6 +80,10 @@ public class BrowserUtils {
         robot.keyRelease(KeyEvent.VK_V);
     }
 
+
+    /**
+     * Presses Enter key
+     */
     public static void hitEnter() {
         Robot robot = null;
         try {

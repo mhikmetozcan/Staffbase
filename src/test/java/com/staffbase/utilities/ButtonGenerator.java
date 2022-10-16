@@ -1,14 +1,16 @@
 package com.staffbase.utilities;
 
+import com.staffbase.pages.ApplicationPage;
 import com.staffbase.pages.JobDescriptionPage;
 
 public class ButtonGenerator {
 
     JobDescriptionPage jobDescriptionPage;
+    ApplicationPage applicationPage;
 
     /**
-     *
-     * @param buttonName
+     * Is used for clicking any button with a single step definition as "click on 'button'"
+     * @param buttonName name of the button to be clicked
      */
     public void clickButton(String buttonName){
         setComponent();
@@ -23,23 +25,27 @@ public class ButtonGenerator {
     }
 
     /**
-     *
+     * Prepares the page object instance
      */
     public void setObject(){
         if (jobDescriptionPage == null){
             jobDescriptionPage = new JobDescriptionPage();
         }
+        if(applicationPage == null){
+            applicationPage = new ApplicationPage();
+        }
     }
 
     /**
-     *
+     * Destroys previous instances of the page objects
      */
     public void resetObject(){
         jobDescriptionPage = null;
+        applicationPage = null;
     }
 
     /**
-     *
+     * Sets the page objects for the use
      */
     public void setComponent(){
         resetObject();
