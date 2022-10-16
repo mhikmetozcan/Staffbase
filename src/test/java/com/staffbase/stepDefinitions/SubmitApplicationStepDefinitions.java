@@ -46,16 +46,6 @@ public class SubmitApplicationStepDefinitions {
         Driver.getDriver().switchTo().parentFrame();
     }
 
-    @When("the resume is attached")
-    public void the_resume_is_attached() throws AWTException {
-
-
-
-    }
-    @When("the cover letter is attached")
-    public void the_cover_letter_is_attached() {
-
-    }
 
     @When("the privacy notice is confirmed")
     public void the_privacy_notice_is_confirmed() {

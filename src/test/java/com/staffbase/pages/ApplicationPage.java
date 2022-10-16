@@ -88,7 +88,7 @@ public class ApplicationPage extends BasePage{
                 BrowserUtils.hitEnter();
                 break;
 
-            case "coverLetter":
+            case "cover letter":
                 coverLetter.click();
                 BrowserUtils.waitFor(2);
                 stringSelection = new StringSelection(ConfigurationReader.getProperty("coverLetter"));
@@ -97,7 +97,6 @@ public class ApplicationPage extends BasePage{
                 BrowserUtils.pasteContent();
                 BrowserUtils.waitFor(1);
                 BrowserUtils.hitEnter();
-
                 break;
         }
 
