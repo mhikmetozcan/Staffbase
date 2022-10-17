@@ -36,8 +36,15 @@ public class ApplicationPage extends BasePage{
 
     @FindBy(xpath = "//div[@class='field-error-msg']")
     public WebElement errorMessage;
+
     @FindBy(xpath = "//button[.='or enter manually']")
     public WebElement enterManually;
+
+    @FindBy(xpath = "//button[@type='button']")
+    public WebElement signInWithLinkedIn;
+
+    @FindBy(xpath = "//iframe[contains(@src,'linkedin')]")
+    public WebElement linkedInFrame;
 
 
     public void dataEntryToInputBox(String fieldName, String fieldValue){
@@ -95,7 +102,7 @@ public class ApplicationPage extends BasePage{
                 WebElement resume = (WebElement)js.executeScript("return document.querySelector(\"#resume_text\")");
                 resume.sendKeys(fieldValue);
                 break;
-            case "https://github.com/johndoe ":
+            case "https://github.com/johndoe":
                 gitHubRepo.sendKeys(fieldValue);
                 break;
             default:
