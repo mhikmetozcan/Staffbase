@@ -1,5 +1,6 @@
 package com.staffbase.utilities;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,6 +11,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class BrowserUtils {
 
@@ -94,5 +96,23 @@ public class BrowserUtils {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
+
+    /**
+     * Checks and accepts if an alert window pops up
+     */
+    public static void checkAlert(){
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 2);
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = Driver.getDriver().switchTo().alert();
+            alert.accept();
+        } catch (org.openqa.selenium.UnhandledAlertException e) {
+            Alert alert = Driver.getDriver().switchTo().alert();
+            alert.accept();
+            System.out.println("There is no alert");
+        }
+    }
+
+
 
 }

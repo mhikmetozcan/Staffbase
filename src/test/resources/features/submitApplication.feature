@@ -21,13 +21,13 @@ Feature: Submit Application
       Then the application should be succesfully sent
 
 
-
-      Scenario Outline: Verify that compulsory fields need to be filled for applying
-        When user enters "<First Name>" "<Last Name>" "<Email>" "<Phone>" "<Resume/CV>" "<GitHubRepo>"
-        And the privacy notice is confirmed
-        And user clicks on "Submit Application" button
-        Then error message should be displayed
-        Examples:
+    @checkMandatoryFields
+    Scenario Outline: Verify that compulsory fields need to be filled for applying
+      When user enters "<First Name>" "<Last Name>" "<Email>" "<Phone>" "<Resume/CV>" "<GitHubRepo>"
+      And the privacy notice is confirmed
+      And user clicks on "Submit Application" button
+      Then error message should be displayed
+      Examples:
           | First Name | Last Name | Email             | Phone     | Resume/CV                | GitHubRepo                 |
           | John       | Doe       | johndoe@gmail.com | 123456789 | John Doe the QA Engineer |                            |
           | John       | Doe       | johndoe@gmail.com | 123456789 |                          | https://github.com/johndoe |

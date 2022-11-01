@@ -2,6 +2,11 @@ package com.staffbase.utilities;
 
 import com.staffbase.pages.ApplicationPage;
 import com.staffbase.pages.JobDescriptionPage;
+import org.openqa.selenium.*;
+
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class ButtonGenerator {
 
