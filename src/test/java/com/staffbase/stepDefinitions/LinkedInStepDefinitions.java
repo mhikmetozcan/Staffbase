@@ -28,7 +28,6 @@ public class LinkedInStepDefinitions {
 
     @Then("User verifies {string} is filled")
     public void userVerifiesIsFilled(String fieldName) {
-        BrowserUtils.waitFor(5);
         Assert.assertNotEquals("",linkedIn.getTextFromField(fieldName));
     }
 }
