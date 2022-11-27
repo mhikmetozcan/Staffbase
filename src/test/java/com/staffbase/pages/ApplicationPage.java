@@ -40,33 +40,45 @@ public class ApplicationPage extends BasePage{
     @FindBy(xpath = "//button[.='or enter manually']")
     public WebElement enterManually;
 
-    @FindBy(xpath = "//button[@type='button']")
-    public WebElement signInWithLinkedIn;
+    @FindBy(xpath = "//input[@id='first_name']")
+    public WebElement firstName;
 
-    @FindBy(xpath = "//iframe[contains(@src,'linkedin')]")
-    public WebElement linkedInFrame;
+    @FindBy(xpath = "//input[@id='last_name']")
+    public WebElement lastName;
+
+    @FindBy(xpath = "//input[@id='email']")
+    public WebElement email;
+
+    @FindBy(xpath = "//input[@id='phone']")
+    public WebElement phone;
+
+    @FindBy(xpath = "//input[@id='job_application_answers_attributes_0_text_value']")
+    public WebElement workPermit;
+
+    @FindBy(xpath = "//textarea[@id='resume_text']")
+    public WebElement manualResume;
 
 
     public void dataEntryToInputBox(String fieldName, String fieldValue){
         switch (fieldName){
             case "firstName":
-                WebElement firstName =(WebElement)js.executeScript("return document.querySelector('#first_name')");
+              //  WebElement firstName =(WebElement)js.executeScript("return document.querySelector('#first_name')");
                 firstName.sendKeys(fieldValue);
                 break;
             case "lastName":
-                WebElement lastName = (WebElement)js.executeScript("return document.querySelector('#last_name')");
+              //  WebElement lastName = (WebElement)js.executeScript("return document.querySelector('#last_name')");
                 lastName.sendKeys(fieldValue);
                 break;
             case "email":
-                WebElement email = (WebElement)js.executeScript("return document.querySelector('#email')") ;
+              //  WebElement email = (WebElement)js.executeScript("return document.querySelector('#email')") ;
                 email.sendKeys(fieldValue);
                 break;
             case "phone":
-                WebElement phone = (WebElement)js.executeScript("return document.querySelector(\"#phone\")");
+              //  WebElement phone = (WebElement)js.executeScript("return document.querySelector(\"#phone\")");
                 phone.sendKeys(fieldValue);
                 break;
             case "work permit status":
-                WebElement workPermit = (WebElement)js.executeScript("return document.querySelector('#job_application_answers_attributes_0_text_value')");
+              //  WebElement workPermit = (WebElement)js.executeScript("return document.querySelector('#job_application_answers_attributes_0_text_value')");
                 workPermit.sendKeys(fieldValue);
                 break;
             case "gitHubRepo":
@@ -82,25 +94,25 @@ public class ApplicationPage extends BasePage{
     public void dataEntryToInputBox(String fieldValue){
         switch (fieldValue){
             case "John":
-                WebElement firstName =(WebElement)js.executeScript("return document.querySelector('#first_name')");
+              //  WebElement firstName =(WebElement)js.executeScript("return document.querySelector('#first_name')");
                 firstName.sendKeys(fieldValue);
                 break;
             case "Doe":
-                WebElement lastName = (WebElement)js.executeScript("return document.querySelector('#last_name')");
+             //   WebElement lastName = (WebElement)js.executeScript("return document.querySelector('#last_name')");
                 lastName.sendKeys(fieldValue);
                 break;
             case "johndoe@gmail.com":
-                WebElement email = (WebElement)js.executeScript("return document.querySelector('#email')") ;
+              //  WebElement email = (WebElement)js.executeScript("return document.querySelector('#email')") ;
                 email.sendKeys(fieldValue);
                 break;
             case "123456789":
-                WebElement phone = (WebElement)js.executeScript("return document.querySelector(\"#phone\")");
+             //   WebElement phone = (WebElement)js.executeScript("return document.querySelector(\"#phone\")");
                 phone.sendKeys(fieldValue);
                 break;
             case "John Doe the QA Engineer":
                 enterManually.click();
-                WebElement resume = (WebElement)js.executeScript("return document.querySelector(\"#resume_text\")");
-                resume.sendKeys(fieldValue);
+                //WebElement resume = (WebElement)js.executeScript("return document.querySelector(\"#resume_text\")");
+                manualResume.sendKeys(fieldValue);
                 break;
             case "https://github.com/johndoe":
                 gitHubRepo.sendKeys(fieldValue);

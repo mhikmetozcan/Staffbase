@@ -17,8 +17,8 @@ Feature: Submit Application
       And user enters "work permit status" as "I possess full work permit in Germany"
       And the privacy notice is confirmed
       And user enters "gitHubRepo" as "https://github.com/mhikmetozcan/Staffbase.git"
-      And user clicks on "Submit Application" button
-      Then the application should be succesfully sent
+  #    And user clicks on "Submit Application" button
+  #    Then the application should be succesfully sent
 
 
     @checkMandatoryFields
